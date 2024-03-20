@@ -16,19 +16,19 @@ const App = () => {
             await fetch('https://jsonplaceholder.typicode.com/users/')
                 .then((response) => response.json())
                 .then((json) => {
-                    json.map((contact) => {
+                    json.map((contact) => (
                         data.push({
                             id: contact.id,
                             name: contact.name,
                             number: contact.phone,
                             email: contact.email
                         });
-                    })
+                    ))
                 });
             dispatch({ type: 'FETCH_CONTACTS', payload: data });
         };
         promise();
-    }, []);
+    }, [dispatch]);
 
 
     return (
